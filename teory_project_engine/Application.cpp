@@ -8,7 +8,7 @@ Application::Application()
 	input = new ModuleInput(this);
 	audio = new ModuleAudio(this, true);
 	player = new ModulePlayer(this);
-	scene = new ModuleScene(this);
+	scene_intro = new ModuleSceneIntro(this);
 	physics = new ModulePhysics(this);
 
 	// The order of calls is very important!
@@ -24,7 +24,7 @@ Application::Application()
 	AddModule(audio);
 	
 	// Scenes
-	AddModule(scene);
+	AddModule(scene_intro);
 	
 	// Player
 	AddModule(player);

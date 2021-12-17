@@ -1,7 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModulePlayer.h"
-#include "PhysBody.h"
+//#include "PhysBody.h"
 
 ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -14,6 +14,7 @@ ModulePlayer::~ModulePlayer()
 bool ModulePlayer::Start()
 {
 	LOG("Loading player");
+
 	return true;
 }
 

@@ -24,14 +24,14 @@ enum lightTypes
 	big
 };
 
-class ModuleScene;
+class ModuleSceneIntro;
 
 struct Light
 {
 	Light() : body(NULL), texture(NULL), on(false), fx(0)
 	{}
 
-	Light(ModuleScene* physics, int x, int y, lightTypes type);
+	Light(ModuleSceneIntro* physics, int x, int y, lightTypes type);
 
 	lightTypes type;
 	PhysBody* body;
@@ -41,11 +41,11 @@ struct Light
 	int x, y;
 };
 
-class ModuleScene : public Module
+class ModuleSceneIntro : public Module
 {
 public:
-	ModuleScene(Application* app, bool start_enabled = true);
-	~ModuleScene();
+	ModuleSceneIntro(Application* app, bool start_enabled = true);
+	~ModuleSceneIntro();
 
 	bool Start();
 	update_status Update();

@@ -43,4 +43,9 @@ public:
 	PhysBody* flipper_up2_wheel;
 
 	PhysBody* sensor1;
+
+	int posX, posY;
+
+	SDL_Rect playerRect;
+
 };

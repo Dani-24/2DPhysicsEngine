@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Application.cpp">
+      <Filter>Main things</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Main things</Filter>
+    </ClCompile>
+    <ClCompile Include="log.cpp">
+      <Filter>Main things</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleWindow.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleTextures.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneIntro.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleRender.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModulePlayer.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleInput.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleAudio.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModulePhysics.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application.h">
+      <Filter>Main things</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Main things</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleAudio.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleInput.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModulePlayer.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleRender.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneIntro.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleTextures.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleWindow.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="p2DynArray.h">
+      <Filter>Header files\Useful things</Filter>
+    </ClInclude>
+    <ClInclude Include="p2List.h">
+      <Filter>Header files\Useful things</Filter>
+    </ClInclude>
+    <ClInclude Include="p2Point.h">
+      <Filter>Header files\Useful things</Filter>
+    </ClInclude>
+    <ClInclude Include="ModulePhysics.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Main things">
+      <UniqueIdentifier>{64a95b84-e094-434c-8bb2-aa2d888958cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{b2d92635-b488-45e9-b04a-68fccbe0cf1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Useful things">
+      <UniqueIdentifier>{fef44a4e-0dbd-4cdb-80ee-31dc8dd093d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{8a292123-c768-41ef-957f-ee05550c5c56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{b27a72c4-e093-4328-8789-a28c2c7d1fa6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

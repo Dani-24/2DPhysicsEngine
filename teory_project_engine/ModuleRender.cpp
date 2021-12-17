@@ -48,21 +48,7 @@ update_status ModuleRender::PreUpdate()
 // Update: debug camera
 update_status ModuleRender::Update()
 {
-	/*
-	int speed = 3;
-
-	if(App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
-		App->renderer->camera.y += speed;
-
-	if(App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-		App->renderer->camera.y -= speed;
-
-	if(App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-		App->renderer->camera.x += speed;
-
-	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-		App->renderer->camera.x -= speed;
-	*/
+	
 	return UPDATE_CONTINUE;
 }
 
@@ -170,7 +156,7 @@ bool ModuleRender::DrawLine(int x1, int y1, int x2, int y2, Uint8 r, Uint8 g, Ui
 
 	if(result != 0)
 	{
-		LOG("Cannot draw quad to screen. SDL_RenderFillRect error: %s", SDL_GetError());
+		LOG("Cannot draw line to screen. SDL_RenderFillRect error: %s", SDL_GetError());
 		ret = false;
 	}
 
