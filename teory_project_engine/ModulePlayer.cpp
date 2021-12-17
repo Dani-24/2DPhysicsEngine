@@ -71,7 +71,7 @@ update_status ModulePlayer::Update()
 
 	while (c != NULL) {
 		
-		c->data.position.x += 10;
+		c->data.position.x += 3;
 
 		// =====================
 		//         DRAW

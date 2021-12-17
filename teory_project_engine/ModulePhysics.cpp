@@ -8,7 +8,6 @@ ModulePhysics::ModulePhysics(Application* app, bool start_enabled) : Module(app,
 	debug = true;
 }
 
-// Destructor
 ModulePhysics::~ModulePhysics()
 {
 }
@@ -19,22 +18,17 @@ bool ModulePhysics::Start()
 	return true;
 }
 
-// 
 update_status ModulePhysics::PreUpdate()
 {
 
 	return UPDATE_CONTINUE;
 }
 
-// 
 update_status ModulePhysics::PostUpdate()
 {
 
 	if(app->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
 		debug = !debug;
-
-	if(!debug)
-		return UPDATE_CONTINUE;
 
 	return UPDATE_CONTINUE;
 }

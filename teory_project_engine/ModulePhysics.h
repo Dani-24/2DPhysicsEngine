@@ -17,3 +17,10 @@ private:
 
 	bool debug;
 };
+
+class PhysBody {
+	iPoint pos;
+
+	void AddForce();
+
+};
