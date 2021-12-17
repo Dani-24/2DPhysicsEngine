@@ -78,6 +78,9 @@
     <ClInclude Include="ModulePhysics.h">
       <Filter>Physics</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resource files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Main things">
@@ -95,5 +98,13 @@
     <Filter Include="Physics">
       <UniqueIdentifier>{b27a72c4-e093-4328-8789-a28c2c7d1fa6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{91cc4ab6-06f3-4376-922f-5c519b93ea2c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Physics Engine - Worms Game.rc">
+      <Filter>Resource files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
