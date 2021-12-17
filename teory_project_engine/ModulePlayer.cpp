@@ -21,7 +21,6 @@ bool ModulePlayer::Start()
 
 	canonBase = app->textures->Load("Assets/canonBase.png");
 	canonShooter = app->textures->Load("Assets/canonMove.png");
-	ball.graphic = app->textures->Load("Assets/canonBall.png");
 
 	return true;
 }
@@ -33,7 +32,6 @@ bool ModulePlayer::CleanUp()
 
 	app->textures->Unload(canonBase);
 	app->textures->Unload(canonShooter);
-	app->textures->Unload(ball.graphic);
 
 	return true;
 }
@@ -52,6 +50,10 @@ update_status ModulePlayer::Update()
 		}
 	}
 
+	if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN) {
+		AddBall();
+	}
+
 	// ============================================
 	//				   DRAW THINGS
 	// ============================================
@@ -60,8 +62,67 @@ update_status ModulePlayer::Update()
 
 	app->renderer->Blit(canonBase, pos.x - 7, pos.y + 30);
 
+
+	// ============================================
+	//                   BALLS
+	// ============================================
+
+	p2List_item<Object>* c = balls.getFirst();
+
+	while (c != NULL) {
+		
+		c->data.position.x += 10;
+
+		// =====================
+		//         DRAW
+		// =====================
+		app->renderer->Blit(c->data.sprite, c->data.position.x, c->data.position.y);
+
+		// Delete balls out of screen
+		if (c->data.position.x > app->scene_intro->BGSize.x) {
+			DeleteBall(c);
+			c = NULL;
+		}
+		else {
+			c = c->next;
+		}
+	}
+
 	return UPDATE_CONTINUE;
 }
 
+void ModulePlayer::AddBall() {
 
+	// Create a new ball
+	Object* ball = new Object();
+
+	ball->sprite = app->textures->Load("Assets/canonBall.png");
+	ball->fx = app->audio->LoadFx("Assets/canonShoot.wav");
+
+	app->audio->PlayFx(ball->fx);
+
+	//ball.body = app->physics
+
+	ball->position.x = pos.x;
+	ball->position.y = pos.y;
+
+	// Add a force to throw the ball from the canon
+
+	// ball.body.addforce();
+
+	// Add ball to the balls list
+	balls.add(*ball);
+
+	// Free memory
+	//delete ball->sprite;
+	//delete ball->body;
+	delete ball;
+}
+
+void ModulePlayer::DeleteBall(p2List_item<Object>* c) {
+	app->textures->Unload(c->data.sprite);
+	//app->physics->world->DestroyBody(c->data.body);
+	c->data.fx = NULL;
+	balls.del(c);
+}
 

@@ -16,6 +16,9 @@ bool ModuleSceneIntro::Start()
 	LOG("Loading Intro assets");
 	bool ret = true;
 
+	BGSize.x = 1920;
+	BGSize.y = 645;
+
 	app->renderer->camera.x = app->renderer->camera.y = 0;
 
 	// Assets

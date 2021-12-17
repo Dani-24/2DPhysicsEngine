@@ -58,7 +58,7 @@ update_status ModuleRender::Update()
 	}
 	else if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) {
 
-		if (-camera.x < 1920 - SCREEN_WIDTH) {
+		if (-camera.x < app->scene_intro->BGSize.x - SCREEN_WIDTH) {
 			camera.x -= 2;
 		}
 	}
