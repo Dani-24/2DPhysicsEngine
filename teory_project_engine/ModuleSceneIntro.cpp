@@ -2,11 +2,9 @@
 #include "Application.h"
 #include "ModuleSceneIntro.h"
 
-
-
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
-	graphics = NULL;
+	background = NULL;
 }
 
 ModuleSceneIntro::~ModuleSceneIntro()
@@ -18,21 +16,35 @@ bool ModuleSceneIntro::Start()
 	LOG("Loading Intro assets");
 	bool ret = true;
 
-	App->renderer->camera.x = App->renderer->camera.y = 0;
+	app->renderer->camera.x = app->renderer->camera.y = 0;
+
+	// Assets
+
+	background = app->textures->Load("Assets/bg.png");
+
+	app->audio->PlayMusic("Assets/bgMusic.ogg");
 
 	return ret;
 }
 
-// Load assets
 bool ModuleSceneIntro::CleanUp()
 {
 	LOG("Unloading Intro scene");
 
+	app->textures->Unload(background);
+
 	return true;
 }
 
-// Update: draw background
 update_status ModuleSceneIntro::Update()
 {
+	//(Camera movement at ModuleRender.cpp Update();)
+
+	// ====================
+	//   Draw Background:
+	// ====================
+
+	app->renderer->Blit(background, 0, 0);
+
 	return UPDATE_CONTINUE;
 }

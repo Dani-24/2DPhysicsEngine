@@ -4,19 +4,6 @@
 #include "p2DynArray.h"
 #include "Globals.h"
 
-#define BOUNCER_TIME 200
-
-struct Bouncer
-{
-	Bouncer() : body(NULL), texture(NULL), hit_timer(0), fx(0)
-	{}
-
-	PhysBody* body;
-	SDL_Texture* texture;
-	Uint32 hit_timer;
-	uint fx;
-};
-
 enum lightTypes
 {
 	tiny,
@@ -53,14 +40,7 @@ public:
 
 public:
 
-	SDL_Texture* graphics;
-	PhysBody* background;
-
-	Bouncer bouncer1;
-	Bouncer bouncer2;
-
-	Bouncer side_bouncer1;
-	Bouncer side_bouncer2;
+	/*
 
 	SDL_Texture* tex_light_tiny;
 	SDL_Texture* tex_light_medium;
@@ -71,6 +51,10 @@ public:
 	uint fx_light_big;
 
 	p2DynArray<Light> lights;
+	
+	*/
+
+	SDL_Texture* background;
 
 	PhysBody* player_lose;
 	uint player_lose_fx;

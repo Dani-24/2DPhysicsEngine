@@ -1,6 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleRender.h"
+#include "ModulePlayer.h"
 
 ModuleRender::ModuleRender(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -26,7 +27,7 @@ bool ModuleRender::Init()
 		flags |= SDL_RENDERER_PRESENTVSYNC;
 	}
 
-	renderer = SDL_CreateRenderer(App->window->window, -1, flags);
+	renderer = SDL_CreateRenderer(app->window->window, -1, flags);
 	
 	if(renderer == NULL)
 	{
@@ -48,7 +49,20 @@ update_status ModuleRender::PreUpdate()
 // Update: debug camera
 update_status ModuleRender::Update()
 {
-	
+	// Camera movement
+	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) {
+
+		if (-camera.x > 0) {
+			camera.x += 2;
+		}
+	}
+	else if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) {
+
+		if (-camera.x < 1920 - SCREEN_WIDTH) {
+			camera.x -= 2;
+		}
+	}
+
 	return UPDATE_CONTINUE;
 }
 
@@ -74,7 +88,7 @@ bool ModuleRender::CleanUp()
 }
 
 // Blit to screen
-bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed, double angle, int pivot_x, int pivot_y )
+bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, double angle, SDL_Rect* section, float speed, int pivot_x, int pivot_y )
 {
 	bool ret = true;
 	SDL_Rect rect;

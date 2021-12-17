@@ -16,13 +16,7 @@
     <ClCompile Include="ModuleTextures.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleSceneIntro.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleRender.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="ModulePlayer.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="ModuleInput.cpp">
@@ -33,6 +27,12 @@
     </ClCompile>
     <ClCompile Include="ModulePhysics.cpp">
       <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="ModulePlayer.cpp">
+      <Filter>Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneIntro.cpp">
+      <Filter>Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -51,13 +51,7 @@
     <ClInclude Include="ModuleInput.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="ModulePlayer.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleRender.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleSceneIntro.h">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="ModuleTextures.h">
@@ -81,6 +75,12 @@
     <ClInclude Include="resource.h">
       <Filter>Resource files</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleSceneIntro.h">
+      <Filter>Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="ModulePlayer.h">
+      <Filter>Gameplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Main things">
@@ -100,6 +100,9 @@
     </Filter>
     <Filter Include="Resource files">
       <UniqueIdentifier>{91cc4ab6-06f3-4376-922f-5c519b93ea2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gameplay">
+      <UniqueIdentifier>{5d5b0485-b003-4571-809b-0b14d21e42ee}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
