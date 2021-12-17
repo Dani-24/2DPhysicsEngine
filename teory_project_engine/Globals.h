@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <windows.h>
 #include <stdio.h>
 
@@ -29,4 +29,4 @@ enum update_status
 #define WIN_BORDERLESS false
 #define WIN_FULLSCREEN_DESKTOP false
 #define VSYNC true
-#define TITLE "BRMM Physics Engine Testbed - Worms like game :D"
+#define TITLE "BRMM Physics Engine Testbed - Worms like game ඞ"
