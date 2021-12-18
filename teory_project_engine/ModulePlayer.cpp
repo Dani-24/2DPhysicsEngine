@@ -43,6 +43,7 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
+	// Angle
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) {
 		if (angle > -120) {
 			angle -= speed;
@@ -54,6 +55,18 @@ update_status ModulePlayer::Update()
 		}
 	}
 
+	// Movement
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) {
+		if (pos.x > 10) {
+			pos.x -= speed;
+		}
+	}
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) {
+		if (pos.x < 400) {
+			pos.x += speed*2;
+		}
+	}
+	// Shoot
 	if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN) {
 		if (balls.count() < MAX_BALLS) {
 			AddBall();
