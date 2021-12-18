@@ -5,7 +5,6 @@
 
 ModulePhysics::ModulePhysics(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
-	debug = true;
 }
 
 ModulePhysics::~ModulePhysics()
@@ -15,6 +14,9 @@ ModulePhysics::~ModulePhysics()
 bool ModulePhysics::Start()
 {
 	LOG("Creating 2D Physics environment");
+
+	debug = app->scene_intro->debug;
+
 	return true;
 }
 
@@ -26,9 +28,6 @@ update_status ModulePhysics::PreUpdate()
 
 update_status ModulePhysics::PostUpdate()
 {
-
-	if(app->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
-		debug = !debug;
 
 	return UPDATE_CONTINUE;
 }

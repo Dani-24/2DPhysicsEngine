@@ -60,4 +60,6 @@ public:
 	uint player_lose_fx;
 
 	iPoint BGSize;
+
+	bool debug;
 };

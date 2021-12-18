@@ -45,7 +45,7 @@ update_status ModulePlayer::Update()
 {
 	// Angle
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) {
-		if (angle > -120) {
+		if (angle > -55) {
 			angle -= speed;
 		}
 	}

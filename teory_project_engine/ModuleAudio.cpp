@@ -163,3 +163,18 @@ bool ModuleAudio::PlayFx(unsigned int id, int repeat)
 
 	return ret;
 }
+
+void ModuleAudio::ChangeVolume(int volume) {
+	
+	// That changes music volume
+	Mix_VolumeMusic(volume);
+
+
+	// Attempt to change Fx volume, as fx are a list and this is called at the start of the program the first fx will always sound
+	p2List_item<Mix_Chunk*>* item;
+
+	for (item = fx.getFirst(); item != NULL; item = item->next)
+	{
+		Mix_VolumeChunk(item->data, volume);
+	}
+}
