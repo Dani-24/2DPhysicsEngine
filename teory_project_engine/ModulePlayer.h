@@ -3,8 +3,7 @@
 #include "Animation.h"
 #include "Globals.h"
 #include "p2Point.h"
-#define MaxBalls 10
-
+#define MAX_BALLS 5
 
 class PhysBody;
 
@@ -12,10 +11,19 @@ struct Object
 {
 	SDL_Texture* sprite;
 	PhysBody* body;
-	uint fx;
 	iPoint position;
 	Object() : sprite(NULL), body(NULL)
 	{}
+};
+
+struct Ball : Object {
+	// ipoint for initial position, texture physbody and the fx
+	Ball(iPoint position, SDL_Texture* texture, PhysBody* body) {
+		this->position = position;
+		this->sprite = texture;
+		this->body = body;
+	}
+	~Ball() {}
 };
 
 class ModulePlayer : public Module
@@ -28,14 +36,18 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+	// Create a new ball from canon
 	void AddBall();
-	void DeleteBall(p2List_item<Object>* c);
+	// Check if balls should be deleted
+	bool DeleteBall(Ball* b);
 
 public:
 
-	p2List<Object> balls;
+	p2List<Ball*> balls;
 
 	SDL_Texture* canonBase, * canonShooter;
+
+	uint shotFx;
 
 	iPoint pos;
 

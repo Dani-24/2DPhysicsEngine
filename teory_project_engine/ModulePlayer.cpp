@@ -22,6 +22,8 @@ bool ModulePlayer::Start()
 	canonBase = app->textures->Load("Assets/canonBase.png");
 	canonShooter = app->textures->Load("Assets/canonMove.png");
 
+	shotFx = app->audio->LoadFx("Assets/canonShoot.wav");
+
 	return true;
 }
 
@@ -32,6 +34,10 @@ bool ModulePlayer::CleanUp()
 
 	app->textures->Unload(canonBase);
 	app->textures->Unload(canonShooter);
+
+	for (p2List_item<Ball*>* item = balls.getFirst(); item; item = item->next) {
+		balls.del(item);
+	}
 
 	return true;
 }
@@ -51,7 +57,9 @@ update_status ModulePlayer::Update()
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN) {
-		AddBall();
+		if (balls.count() < MAX_BALLS) {
+			AddBall();
+		}
 	}
 
 	// ============================================
@@ -67,25 +75,29 @@ update_status ModulePlayer::Update()
 	//                   BALLS
 	// ============================================
 
-	p2List_item<Object>* c = balls.getFirst();
+
+	// Check die
+	for (p2List_item<Ball*>* item = balls.getFirst(); item != NULL; item = item->next) {
+		if (item->data->position.x > app->scene_intro->BGSize.x) {
+			if (DeleteBall(item->data) == true) {
+				break;
+			}
+		}
+	}
+
+
+	p2List_item<Ball*>* c = balls.getFirst();
 
 	while (c != NULL) {
 		
-		c->data.position.x += 3;
+		c->data->position.x += 3;
 
 		// =====================
 		//         DRAW
 		// =====================
-		app->renderer->Blit(c->data.sprite, c->data.position.x, c->data.position.y);
-
-		// Delete balls out of screen
-		if (c->data.position.x > app->scene_intro->BGSize.x) {
-			DeleteBall(c);
-			c = NULL;
-		}
-		else {
-			c = c->next;
-		}
+		app->renderer->Blit(c->data->sprite, c->data->position.x, c->data->position.y);
+		
+		c = c->next;
 	}
 
 	return UPDATE_CONTINUE;
@@ -94,35 +106,34 @@ update_status ModulePlayer::Update()
 void ModulePlayer::AddBall() {
 
 	// Create a new ball
-	Object* ball = new Object();
+	Ball* ball = new Ball(pos, app->textures->Load("Assets/canonBall.png"), NULL);
 
-	ball->sprite = app->textures->Load("Assets/canonBall.png");
-	ball->fx = app->audio->LoadFx("Assets/canonShoot.wav");
-
-	app->audio->PlayFx(ball->fx);
-
-	//ball.body = app->physics
-
-	ball->position.x = pos.x;
-	ball->position.y = pos.y;
-
-	// Add a force to throw the ball from the canon
-
-	// ball.body.addforce();
+	app->audio->PlayFx(shotFx);
 
 	// Add ball to the balls list
-	balls.add(*ball);
-
-	// Free memory
-	//delete ball->sprite;
-	//delete ball->body;
-	delete ball;
+	balls.add(ball);
 }
 
-void ModulePlayer::DeleteBall(p2List_item<Object>* c) {
-	app->textures->Unload(c->data.sprite);
-	//app->physics->world->DestroyBody(c->data.body);
-	c->data.fx = NULL;
-	balls.del(c);
+bool ModulePlayer::DeleteBall(Ball* b) {
+
+	p2List_item<Ball*>* c =balls.getFirst();
+
+	bool ballDeleted = false;
+
+	while (c != NULL && ballDeleted == false) {
+		
+		if (c->data == b) {
+
+			app->textures->Unload(c->data->sprite);
+			//app->physics->theWorld->UnloadBody(c->data->body);
+			balls.del(c);
+			ballDeleted = true;
+
+			return true;
+		}
+		c = c->next;
+	}
+
+	return false;
 }
 

@@ -26,13 +26,19 @@
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="ModulePhysics.cpp">
-      <Filter>Physics</Filter>
+      <Filter>Physics %28Engine%29</Filter>
     </ClCompile>
     <ClCompile Include="ModulePlayer.cpp">
       <Filter>Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="ModuleSceneIntro.cpp">
       <Filter>Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysBody.cpp">
+      <Filter>Physics %28Engine%29</Filter>
+    </ClCompile>
+    <ClCompile Include="Collisions.cpp">
+      <Filter>Physics %28Engine%29</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -70,7 +76,7 @@
       <Filter>Header files\Useful things</Filter>
     </ClInclude>
     <ClInclude Include="ModulePhysics.h">
-      <Filter>Physics</Filter>
+      <Filter>Physics %28Engine%29</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Resource files</Filter>
@@ -80,6 +86,12 @@
     </ClInclude>
     <ClInclude Include="ModulePlayer.h">
       <Filter>Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysBody.h">
+      <Filter>Physics %28Engine%29</Filter>
+    </ClInclude>
+    <ClInclude Include="Collisions.h">
+      <Filter>Physics %28Engine%29</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -95,14 +107,14 @@
     <Filter Include="Source files">
       <UniqueIdentifier>{8a292123-c768-41ef-957f-ee05550c5c56}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Physics">
-      <UniqueIdentifier>{b27a72c4-e093-4328-8789-a28c2c7d1fa6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource files">
       <UniqueIdentifier>{91cc4ab6-06f3-4376-922f-5c519b93ea2c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Gameplay">
       <UniqueIdentifier>{5d5b0485-b003-4571-809b-0b14d21e42ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics %28Engine%29">
+      <UniqueIdentifier>{b27a72c4-e093-4328-8789-a28c2c7d1fa6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

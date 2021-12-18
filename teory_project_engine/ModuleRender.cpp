@@ -49,17 +49,29 @@ update_status ModuleRender::PreUpdate()
 // Update: debug camera
 update_status ModuleRender::Update()
 {
-	// Camera movement
-	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) {
+	// Check if any ball exist:
+	if (app->player->balls.getFirst() == NULL) {
+		
+		if (camera.x >= -app->scene_intro->BGSize.x) {
+			camera.x = 0;
+		}
 
-		if (-camera.x > 0) {
-			camera.x += 2;
+		// Camera free movement (if there is no Ball)
+		if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) {
+			if (-camera.x > 0) {
+				camera.x += 2;
+			}
+		}
+		else if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) {
+			if (-camera.x < app->scene_intro->BGSize.x - SCREEN_WIDTH) {
+				camera.x -= 2;
+			}
 		}
 	}
-	else if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) {
-
-		if (-camera.x < app->scene_intro->BGSize.x - SCREEN_WIDTH) {
-			camera.x -= 2;
+	else {
+		// Camera following balls
+		if (app->player->balls.getFirst()->data->position.x - SCREEN_WIDTH / 2 > 0 && app->player->balls.getFirst()->data->position.x + SCREEN_WIDTH / 2 < app->scene_intro->BGSize.x) {
+			camera.x = -app->player->balls.getFirst()->data->position.x + SCREEN_WIDTH / 2;
 		}
 	}
 
