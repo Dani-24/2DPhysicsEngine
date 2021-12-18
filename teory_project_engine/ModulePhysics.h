@@ -2,6 +2,8 @@
 #include "Module.h"
 #include "Globals.h"
 
+#include "BrmmPhysEngine.h"
+
 class ModulePhysics : public Module
 {
 public:
@@ -16,11 +18,4 @@ public:
 private:
 
 	bool debug;
-};
-
-class PhysBody {
-	iPoint pos;
-
-	void AddForce();
-
 };

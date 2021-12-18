@@ -40,6 +40,9 @@
     <ClCompile Include="Collisions.cpp">
       <Filter>Physics %28Engine%29</Filter>
     </ClCompile>
+    <ClCompile Include="BrmmPhysEngine.cpp">
+      <Filter>Physics %28Engine%29</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -91,6 +94,9 @@
       <Filter>Physics %28Engine%29</Filter>
     </ClInclude>
     <ClInclude Include="Collisions.h">
+      <Filter>Physics %28Engine%29</Filter>
+    </ClInclude>
+    <ClInclude Include="BrmmPhysEngine.h">
       <Filter>Physics %28Engine%29</Filter>
     </ClInclude>
   </ItemGroup>

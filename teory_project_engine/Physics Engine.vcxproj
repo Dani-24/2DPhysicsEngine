@@ -70,6 +70,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="BrmmPhysEngine.h" />
     <ClInclude Include="Collisions.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="ModulePhysics.h" />
@@ -89,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="BrmmPhysEngine.cpp" />
     <ClCompile Include="Collisions.cpp" />
     <ClCompile Include="log.cpp" />
     <ClCompile Include="Main.cpp" />

@@ -35,9 +35,7 @@ bool ModulePlayer::CleanUp()
 	app->textures->Unload(canonBase);
 	app->textures->Unload(canonShooter);
 
-	for (p2List_item<Ball*>* item = balls.getFirst(); item; item = item->next) {
-		balls.del(item);
-	}
+	balls.clear();
 
 	return true;
 }
