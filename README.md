@@ -4,9 +4,7 @@
 
 Car engine go brmmm brmmmmm
 
-Box2D engine go b2Body b2brrmmm
-
-My engine is BRMM engine
+My engine is BRMM engine, and BRMM engine is a Nice engine
 
 -----------------------
 
@@ -24,11 +22,13 @@ https://github.com/Dani-24/2DPhysicsEngine
 
 ### Controls
 
-  - ª
+  - W/S Adjust canon angle
+  - A/D Move canon position
+  - E Shoot canon ball
 
 ## Debug
 
-  - ª
+  - F1 Show Colliders
 
 ## Additional comments
 This game was done with [SDL](https://www.libsdl.org/index.php)
