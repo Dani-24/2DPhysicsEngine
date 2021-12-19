@@ -3,16 +3,6 @@
 #include "Application.h"
 #include "math.h"
 
-BrmmPhysEngine::BrmmPhysEngine() 
-{
-
-};
-
-BrmmPhysEngine::~BrmmPhysEngine() 
-{
-
-};
-
 bool BrmmPhysEngine::CleanUp() {
 
 	bodies.clear();
@@ -68,7 +58,7 @@ void BrmmPhysEngine::CheckCollisions(p2List_item<PhysBody*>*& c) {
 
 	for (c = bodies.getFirst(); c != NULL; c = c->next) {
 		for (c2 = c->next; c2 != NULL; c2 = c2->next) {
-			float distBetweenAxis;// = CalculateModule;
+			float distBetweenAxis = 0;// = CalculateModule;
 			bool sphere = false;
 			bool staticBody = false;
 
@@ -79,7 +69,7 @@ void BrmmPhysEngine::CheckCollisions(p2List_item<PhysBody*>*& c) {
 				//Collision(c->data, c2->data);
 			}
 			else if (!sphere && !staticBody) {
-				float volume; // = CollisionBox(c->data, c2->data);
+				float volume = 0; // = CollisionBox(c->data, c2->data);
 				if (volume != 0) {
 					// Add buoyance force
 					c2->data->AddForce(ForceBuoyance(c2->data, volume));
@@ -131,11 +121,16 @@ void BrmmPhysEngine::AccelerationAngular(PhysBody* body) {
 void BrmmPhysEngine::VelocityLinear(PhysBody* body, float dt) {
 	// X = Xo + Vo * t + 1 / a * t^2
 	// V = Vo + a * t
-	iPoint position = { body->getPosition().x + body->getLinearVelocity().x * dt + 0.5f * body->getLinearAcceleration().x * pow(dt, 2), body->getPosition().y + body->getLinearVelocity().y * dt + 0.5f * body->getLinearAcceleration().y * pow(dt, 2) };
-	iPoint velocity = { body->getLinearVelocity().x + body->getLinearAcceleration().x * dt, body->getLinearVelocity().y + body->getLinearAcceleration().y * dt };
+	float positionX =  body->getPosition().x + body->getLinearVelocity().x * dt + 0.5f * body->getLinearAcceleration().x * pow(dt, 2);
+	float positionY = body->getPosition().y + body->getLinearVelocity().y * dt + 0.5f * body->getLinearAcceleration().y * pow(dt, 2);
 
-	body->setPosition({ position.x, position.y });
-	body->setLinearVelocity({ velocity.x, velocity.y });
+	float velocityX = body->getLinearVelocity().x + body->getLinearAcceleration().x * dt;
+	float velocityY = body->getLinearVelocity().y + body->getLinearAcceleration().y * dt;
+
+	//(*Tried to do this with fPoints but restricted conversion error :D)
+
+	body->setPosition({ positionX, positionY });
+	body->setLinearVelocity({ velocityX, velocityY });
 }
 
 void BrmmPhysEngine::VelocityAngular(PhysBody* body, float dt) {

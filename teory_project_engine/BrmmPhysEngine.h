@@ -1,6 +1,11 @@
+#pragma once
 #include "Collisions.h"
-#include "PhysBody.h"
 #include "p2List.h"
+#include "PhysBody.h"
+#include "p2Point.h"
+#include "Globals.h"
+
+class PhysBody;
 
 enum TypesOfBodies {
 	PLAYER,
@@ -14,8 +19,6 @@ public:
 	~BrmmPhysEngine() {};
 
 	bool CleanUp();
-
-	p2List<PhysBody*> bodies;
 
 	void AddBody(PhysBody* body);
 	void DeleteBody(PhysBody* body);
@@ -44,6 +47,9 @@ public:
 	void VelocityLinear(PhysBody* body, float dt);
 	// Angular Velocity Verlet
 	void VelocityAngular(PhysBody* body, float dt);
+
+public:
+	p2List<PhysBody*> bodies;
 
 private:
 	float dt;
