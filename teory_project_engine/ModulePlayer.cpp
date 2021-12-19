@@ -41,29 +41,29 @@ bool ModulePlayer::CleanUp()
 }
 
 // Update: draw background
-update_status ModulePlayer::Update()
+update_status ModulePlayer::Update(float dt)
 {
 	// Angle
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) {
 		if (angle > -55) {
-			angle -= speed;
+			angle -= speed * dt;
 		}
 	}
 	else if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) {
 		if (angle < 12) {
-			angle += speed;
+			angle += speed * dt;
 		}
 	}
 
 	// Movement
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) {
 		if (pos.x > 10) {
-			pos.x -= speed;
+			pos.x -= speed * dt;
 		}
 	}
 	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) {
 		if (pos.x < 400) {
-			pos.x += speed*2;
+			pos.x += speed * 2 * dt;
 		}
 	}
 	// Shoot
@@ -81,11 +81,9 @@ update_status ModulePlayer::Update()
 
 	app->renderer->Blit(canonBase, pos.x - 7, pos.y + 30);
 
-
 	// ============================================
 	//                   BALLS
 	// ============================================
-
 
 	// Check die
 	for (p2List_item<Ball*>* item = balls.getFirst(); item != NULL; item = item->next) {
@@ -96,12 +94,11 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-
 	p2List_item<Ball*>* c = balls.getFirst();
 
 	while (c != NULL) {
 		
-		c->data->position.x += 3;
+		c->data->position.x += 0.2f * dt;
 
 		// =====================
 		//         DRAW

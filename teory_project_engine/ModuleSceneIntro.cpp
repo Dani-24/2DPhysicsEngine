@@ -5,8 +5,6 @@
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 	background = NULL;
-
-	debug = false;
 }
 
 ModuleSceneIntro::~ModuleSceneIntro()
@@ -29,15 +27,6 @@ bool ModuleSceneIntro::Start()
 
 	app->audio->PlayMusic("Assets/bgMusic.ogg");
 
-	// Audio volume
-
-	if (debug != true) {
-		app->audio->ChangeVolume(0);
-	}
-	else {
-		app->audio->ChangeVolume(128);
-	}
-
 	return ret;
 }
 
@@ -50,14 +39,14 @@ bool ModuleSceneIntro::CleanUp()
 	return true;
 }
 
-update_status ModuleSceneIntro::Update()
+update_status ModuleSceneIntro::Update(float dt)
 {
 	//(Camera movement at ModuleRender.cpp Update();)
 
 	if (app->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN) {
-		debug = !debug;
+		app->setDebugMode();
 
-		if (debug != true) {
+		if (app->getDebugMode() != true) {
 			app->audio->ChangeVolume(0);
 		}
 		else {

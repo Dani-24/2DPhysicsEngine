@@ -25,6 +25,7 @@ public:
 	void setPosition(fPoint position) { this->position = position; };
 	void setAngularPosition(float angle) { angularPosition = angle; };
 
+	void setRadius(float radius) { this->radius = radius; };
 	void setRotation(float angle) { this->angle = angle; };
 	void setDensity(float density) { this->density = density; };
 	

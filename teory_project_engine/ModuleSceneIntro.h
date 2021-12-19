@@ -35,7 +35,7 @@ public:
 	~ModuleSceneIntro();
 
 	bool Start();
-	update_status Update();
+	update_status Update(float dt);
 	bool CleanUp();
 
 public:
@@ -60,6 +60,4 @@ public:
 	uint player_lose_fx;
 
 	iPoint BGSize;
-
-	bool debug;
 };

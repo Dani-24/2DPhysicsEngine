@@ -43,6 +43,12 @@
     <ClCompile Include="BrmmPhysEngine.cpp">
       <Filter>Physics %28Engine%29</Filter>
     </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Main things\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="PerfTimer.cpp">
+      <Filter>Main things\Timer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -99,6 +105,12 @@
     <ClInclude Include="BrmmPhysEngine.h">
       <Filter>Physics %28Engine%29</Filter>
     </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Main things\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="PerfTimer.h">
+      <Filter>Main things\Timer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Main things">
@@ -121,6 +133,9 @@
     </Filter>
     <Filter Include="Physics %28Engine%29">
       <UniqueIdentifier>{b27a72c4-e093-4328-8789-a28c2c7d1fa6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main things\Timer">
+      <UniqueIdentifier>{80c05b6f-70e3-458f-b809-446db0082fa7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

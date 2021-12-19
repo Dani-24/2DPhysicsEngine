@@ -12,10 +12,23 @@ public:
 
 	bool Start();
 	update_status PreUpdate();
+	update_status Update(float dt);
 	update_status PostUpdate();
 	bool CleanUp();
 
+	// PhysBody functions
+
+	PhysBody* CreateBall(fPoint position, int radius);
+
+	PhysBody* CreateRect(fPoint position, int width, int height);
+
+	PhysBody* CreateSolidRect(fPoint position, int width, int height);
+
+	void DestroyBodyFromAstralPlane(PhysBody* physB);
+
 private:
-	float dt = 1.0f / 60;
+
 	bool debug;
+
+	BrmmPhysEngine* za_Warudo; // the physics world
 };

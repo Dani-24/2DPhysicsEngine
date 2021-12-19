@@ -28,6 +28,10 @@ Application::Application()
 	
 	// Player
 	AddModule(player);
+
+	// Timers
+	ptimer = new PerfTimer();
+	frameDuration = new PerfTimer();
 }
 
 Application::~Application()
@@ -45,7 +49,9 @@ bool Application::Init()
 {
 	bool ret = true;
 
-	// Call Init() in all modules
+	// ========================================
+	//					INIT()
+	// ========================================
 	p2List_item<Module*>* item = list_modules.getFirst();
 
 	while(item != NULL && ret == true)
@@ -54,8 +60,16 @@ bool Application::Init()
 		item = item->next;
 	}
 
-	// After all Init calls we call Start() in all modules
+	// ========================================
+	//					START()
+	// ========================================
 	LOG("Application Start --------------");
+
+	// Timers
+	startupTime.Start();
+	lastSecFrameTime.Start();
+
+	// Module starts()
 	item = list_modules.getFirst();
 
 	while(item != NULL && ret == true)
@@ -64,13 +78,18 @@ bool Application::Init()
 			ret = item->data->Start();
 		item = item->next;
 	}
-	
+
 	return ret;
 }
 
 // Call PreUpdate, Update and PostUpdate on all modules
 update_status Application::Update()
 {
+	// Timers PreUpdate
+	frameCount++;
+	lastSecFrameCount++;
+	frameDuration->Start();
+
 	update_status ret = UPDATE_CONTINUE;
 	p2List_item<Module*>* item = list_modules.getFirst();
 
@@ -86,7 +105,7 @@ update_status Application::Update()
 	while(item != NULL && ret == UPDATE_CONTINUE)
 	{
 		if(item->data->IsEnabled())
-  			ret = item->data->Update();
+  			ret = item->data->Update(dt);
 		item = item->next;
 	}
 
@@ -98,6 +117,21 @@ update_status Application::Update()
 			ret = item->data->PostUpdate();
 		item = item->next;
 	}
+
+	// Timers postUpdate
+	float secondsSinceStartup = startupTime.ReadSec();
+
+	if (lastSecFrameTime.Read() > 1000) {
+		lastSecFrameTime.Start();
+		framesPerSecond = lastSecFrameCount;
+		lastSecFrameCount = 0;
+	}
+
+	static char windowTitle[256];
+
+	sprintf_s(windowTitle, 256, "FPS: %i // dt: %.2f", framesPerSecond, dt);
+
+	setWindowTitle(windowTitle);
 
 	return ret;
 }

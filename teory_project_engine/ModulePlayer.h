@@ -11,14 +11,14 @@ struct Object
 {
 	SDL_Texture* sprite;
 	PhysBody* body;
-	iPoint position;
+	fPoint position;
 	Object() : sprite(NULL), body(NULL)
 	{}
 };
 
 struct Ball : Object {
 	// ipoint for initial position, texture physbody and the fx
-	Ball(iPoint position, SDL_Texture* texture, PhysBody* body) {
+	Ball(fPoint position, SDL_Texture* texture, PhysBody* body) {
 		this->position = position;
 		this->sprite = texture;
 		this->body = body;
@@ -33,7 +33,7 @@ public:
 	virtual ~ModulePlayer();
 
 	bool Start();
-	update_status Update();
+	update_status Update(float dt);
 	bool CleanUp();
 
 	// Create a new ball from canon
@@ -49,7 +49,7 @@ public:
 
 	uint shotFx;
 
-	iPoint pos;
+	fPoint pos;
 
-	double angle, speed = 0.5;
+	double angle, speed = 0.05;
 };

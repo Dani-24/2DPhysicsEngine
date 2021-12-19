@@ -1,4 +1,5 @@
-#pragma once
+﻿#pragma once
+
 #include "Collisions.h"
 #include "p2List.h"
 #include "PhysBody.h"
@@ -9,7 +10,7 @@ class PhysBody;
 
 enum TypesOfBodies {
 	PLAYER,
-	/* everybody wants to be my*/ ENEMY,
+	/* ♫ everybody wants to be my*/ ENEMY,
 	CANONBALL
 };
 
@@ -52,15 +53,12 @@ public:
 	p2List<PhysBody*> bodies;
 
 private:
-	float dt;
-	bool debug;
-
 	float gravity = 9.8f;
 };
 
 class Environment {
 public:
-	fPoint wind = {1, 1};
+	fPoint wind = { 1.0f, 1.0f };
 	float density = 1;
 };
 

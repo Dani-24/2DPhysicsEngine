@@ -12,6 +12,13 @@
 #include "ModulePhysics.h"
 #include "ModuleSceneIntro.h"
 
+#include "PerfTimer.h"
+#include "Timer.h"
+
+#include <sstream>
+#include <string.h>
+using namespace std;
+
 class Application
 {
 public:
@@ -37,7 +44,33 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+	// Config
+	void setDeltaTime(float dt) { this->dt = dt; };
+
+	void setWindowTitle(const char* title) { window->SetTitle(title); };
+
+	void setDebugMode() { debug = !debug; };
+	bool getDebugMode() { return debug; };
+
 private:
 
 	void AddModule(Module* mod);
+
+private:
+	// Debug by default is off (Debug key = F1)
+	bool debug = false;
+
+	// Time control --------
+	PerfTimer* ptimer;
+	PerfTimer* frameDuration;
+
+	Timer startupTime;
+	Timer frameTime;
+	Timer lastSecFrameTime;
+
+	int frameCount = 0;
+	int framesPerSecond = 0;
+	int lastSecFrameCount = 0;
+
+	float dt = 1000.0f / 60;
 };
