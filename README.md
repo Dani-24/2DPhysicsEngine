@@ -31,6 +31,8 @@ https://github.com/Dani-24/2DPhysicsEngine
 ## Debug
 
   - F1 Debug Mode
+  - F2 Set 30 fps cap
+  - F3 Set 60 fps cap
 
 ## Additional comments
 This game was done with [SDL](https://www.libsdl.org/index.php)
