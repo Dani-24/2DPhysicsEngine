@@ -23,6 +23,8 @@ public:
 	void setSurface(float surface) { this->surface = surface; };
 	void setGravityScale(float gravityScale) { this->gravityScale = gravityScale; };
 	void setPosition(fPoint position) { this->position = position; };
+	void setAngularPosition(float angle) { angularPosition = angle; };
+
 	void setRotation(float angle) { this->angle = angle; };
 	void setDensity(float density) { this->density = density; };
 	
@@ -52,9 +54,11 @@ public:
 	float getGravityScale() { return gravityScale; };
 	float getDensity() { return density; };
 
+	float getRadius() { return radius; };
+
 	fPoint getPosition() { return position; };
 	float getRotation() { return angle; };
-	
+	float& GetPositionAngular() { return angularPosition; };
 
 	fPoint getLinearVelocity() { return velocity; };
 	float getAngularVelocity() { return angularVelocity; };
@@ -67,16 +71,19 @@ public:
 	float getLiftCoefficient() { return liftCo; };
 	float getDragCoefficient() { return dragCo; };
 
+	fPoint GetForce() { return force; };
+	float GetTorque() { return torque; };
+
 	// ======================================
 	// Interactions
 	// ======================================
 
-	//void RotatePhysBody(float rotation); // idk if i'm gonna use it
-
 	void AddForce(fPoint force);
-	//void AddTorque(fPoint force, fPoint distance);
+	void ResetForce();
 
-	void ResetForces();
+	// Add a torque by a force (By default at distance 1 what is the center of the mass
+	void AddTorque(fPoint force, fPoint d = { 1,1 });
+	void ResetTorque();
 
 	void EnablePhysics() { physicsEnabled = true; };
 	void DisablePhysics() { physicsEnabled = false; };
@@ -84,41 +91,38 @@ public:
 	// Are physics enabled on this PhysBody?
 	bool PhysicsState() { return physicsEnabled; };
 
-
 	// ================= Añadir impulso ????¿¿¿???? =======================
 
 private:
 
 	// --- Body Properties ---
-	fPoint position;
+	fPoint position = { 0,0 };
 	float mass;
 	float width;
 	float height;
 	float angle;
 	PhysBodyType type;
 	float surface;
+	float radius = 0;
 	float density;
 
 	// --- Linear ---
-	fPoint velocity;
-	fPoint acceleration;
+	fPoint velocity = { 0,0 };
+	fPoint acceleration = { 0,0 };
 
 	// --- Angular ---
-	float angularVelocity;
-	float angularAcceleration;
+	float angularPosition = 0;
+	float angularVelocity = 0;
+	float angularAcceleration = 0;
 
 	// --- Forces ---
 	float gravityScale = 1.0f;
 
-	fPoint force;
-
-	//float torque;
+	fPoint force = { 0,0 };
+	float torque = 0;
 
 	float liftCo;
 	float dragCo;
 
 	bool physicsEnabled = true;
-
-	// PhysBodyCollider:
-	//fPoint* bodyColliders = new fPoint[10];
 };

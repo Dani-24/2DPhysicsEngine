@@ -23,6 +23,9 @@ public:
 		y = p.y;
 	}
 
+	p2Point(TYPE x, TYPE y) : x(x), y(y)
+	{}
+
 	// Math ------------------------------------------------
 	p2Point operator -(const p2Point &v) const
 	{

@@ -16,6 +16,6 @@ public:
 	bool CleanUp();
 
 private:
-
+	float dt = 1.0f / 60;
 	bool debug;
 };
