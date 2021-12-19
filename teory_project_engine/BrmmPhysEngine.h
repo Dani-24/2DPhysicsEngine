@@ -58,5 +58,6 @@ public:
 	p2List<PhysBody*> bodies;
 
 private:
-	float gravity = 0.0001f;
+	// As dt is x1000 all what use dt is /1000 (Should fix that dtX1000 but i have no time sorry :D)
+	float gravity = 0.1f / 1000;
 };

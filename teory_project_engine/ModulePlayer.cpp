@@ -128,8 +128,6 @@ void ModulePlayer::AddBall() {
 	// Create a new ball
 	Ball* ball = new Ball(pos, app->textures->Load("Assets/canonBall.png"), app->physics->CreateBall(pos, 20));
 
-	//ball->body->setGravityScale(0.1f);
-
 	// Play spawn Fx
 	app->audio->PlayFx(shotFx);
 
