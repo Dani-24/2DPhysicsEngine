@@ -30,7 +30,7 @@ https://github.com/Dani-24/2DPhysicsEngine
 
 ## Debug
 
-  - F1 Show Colliders
+  - F1 Debug Mode
 
 ## Additional comments
 This game was done with [SDL](https://www.libsdl.org/index.php)
