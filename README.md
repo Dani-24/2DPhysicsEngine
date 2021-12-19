@@ -25,6 +25,8 @@ https://github.com/Dani-24/2DPhysicsEngine
   - W/S Adjust canon angle
   - A/D Move canon position
   - E Shoot canon ball
+  - 1 Decrease canon force
+  - 2 Increase canon force
 
 ## Debug
 
