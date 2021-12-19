@@ -1,8 +1,23 @@
 #pragma once
 #include "Module.h"
 #include "Globals.h"
-
+#include "Animation.h"
 #include "BrmmPhysEngine.h"
+
+class Environment {
+public:
+	fPoint wind = { 1.0f, 1.0f };
+	float density = 1;
+};
+
+struct Ground {
+	PhysBody* groundBody;
+
+	fPoint position = { 0, SCREEN_HEIGHT - 75 };
+
+	SDL_Texture* groundTexture;
+	Animation idleAnim;
+};
 
 class ModulePhysics : public Module
 {
@@ -26,9 +41,18 @@ public:
 
 	void DestroyBodyFromAstralPlane(PhysBody* physB);
 
-private:
+	Ground* CreateGround();
+	void CreateEnvironment();
 
+	void DebugDraw();
+
+private:
 	bool debug;
 
+	Animation idleAnim;
+
+	Ground* ground;
+
+public:
 	BrmmPhysEngine* za_Warudo; // the physics world
 };

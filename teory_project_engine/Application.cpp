@@ -129,7 +129,7 @@ update_status Application::Update()
 
 	static char windowTitle[256];
 
-	sprintf_s(windowTitle, 256, "FPS: %i // dt: %.2f", framesPerSecond, dt);
+	sprintf_s(windowTitle, 256, "FPS: %i // dt: %.2f // Canon Angle: %.0f // Canon force: %.3f", framesPerSecond, dt, player->shootAngle, player->shootForce);
 
 	setWindowTitle(windowTitle);
 

@@ -24,6 +24,8 @@ struct Ball : Object {
 		this->body = body;
 	}
 	~Ball() {}
+
+	int radius;
 };
 
 class ModulePlayer : public Module
@@ -47,9 +49,9 @@ public:
 
 	SDL_Texture* canonBase, * canonShooter;
 
-	uint shotFx;
+	uint shotFx, hitFx;
 
 	fPoint pos;
 
-	double angle, speed = 0.05;
+	float angle, shootAngle, shootForce = 0.02f, speed = 0.05f;
 };

@@ -111,6 +111,9 @@
     <ClInclude Include="PerfTimer.h">
       <Filter>Main things\Timer</Filter>
     </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Header files\Useful things</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Main things">

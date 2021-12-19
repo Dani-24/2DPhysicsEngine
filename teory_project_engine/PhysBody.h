@@ -17,12 +17,13 @@ public:
 	// Variables setters
 	// ======================================
 
-	void setBodyDimensions(float width, float height) { this->width = width; this->height = height; };
+	void setDimensions(float width, float height) { this->width = width; this->height = height; };
 
 	void setMass(float mass) { this->mass = mass; };
 	void setSurface(float surface) { this->surface = surface; };
 	void setGravityScale(float gravityScale) { this->gravityScale = gravityScale; };
-	void setPosition(fPoint position) { this->position = position; };
+
+	void setPosition(fPoint position) { this->position = position; this->position.x = this->position.x; this->position.y = this->position.y;};
 	void setAngularPosition(float angle) { angularPosition = angle; };
 
 	void setRadius(float radius) { this->radius = radius; };
@@ -92,13 +93,11 @@ public:
 	// Are physics enabled on this PhysBody?
 	bool PhysicsState() { return physicsEnabled; };
 
-	// ================= Añadir impulso ????¿¿¿???? =======================
-
 private:
 
 	// --- Body Properties ---
 	fPoint position = { 0,0 };
-	float mass;
+	float mass = 1;
 	float width;
 	float height;
 	float angle;

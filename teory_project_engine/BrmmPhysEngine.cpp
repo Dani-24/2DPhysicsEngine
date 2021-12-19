@@ -89,14 +89,18 @@ void BrmmPhysEngine::AddBody(PhysBody* body) {
 }
 
 void BrmmPhysEngine::DeleteBody(PhysBody* body) {
-	p2List_item<PhysBody*>* c;
+	
+	p2List_item<PhysBody*>* c = bodies.getFirst();
+	bool deleted = false;
 
-	for (c = bodies.getFirst(); c != NULL; c = c->next)
+	while (c != NULL && deleted == false)
 	{
 		if (c->data == body)
 		{
 			bodies.del(c);
+			deleted = true;
 		}
+		c = c->next;
 	}
 }
 
@@ -162,4 +166,15 @@ fPoint BrmmPhysEngine::ForceDrag(fPoint velocity, float density) {
 fPoint BrmmPhysEngine::ForceBuoyance(PhysBody* body, float volume) {
 	fPoint forceBuoy = { 0, (1 * abs(body->getGravityScale()) * volume) * -1 };
 	return forceBuoy;
+}
+
+float BrmmPhysEngine::Module(float x, float y) {
+	float mod = sqrt( pow(x, 2) + pow(y, 2));
+	return mod;
+}
+
+void BrmmPhysEngine::Unitary(float x, float y) {
+	float mod = Module(x, y);
+	x = x / mod;
+	y = y / mod;
 }

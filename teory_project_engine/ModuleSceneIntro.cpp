@@ -43,6 +43,7 @@ update_status ModuleSceneIntro::Update(float dt)
 {
 	//(Camera movement at ModuleRender.cpp Update();)
 
+	// Debug Mode Control
 	if (app->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN) {
 		app->setDebugMode();
 

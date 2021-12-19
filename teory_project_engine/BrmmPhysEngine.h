@@ -11,7 +11,8 @@ class PhysBody;
 enum TypesOfBodies {
 	PLAYER,
 	/* ♫ everybody wants to be my*/ ENEMY,
-	CANONBALL
+	CANONBALL,
+	GROUND
 };
 
 class BrmmPhysEngine {
@@ -38,6 +39,7 @@ public:
 	fPoint ForceGravity(float mass);
 	fPoint ForceDrag(fPoint velocity, float density);
 	fPoint ForceBuoyance(PhysBody* body, float volume);
+	fPoint ForceLift() {};
 
 	// Accelerations / Velocities
 
@@ -49,19 +51,12 @@ public:
 	// Angular Velocity Verlet
 	void VelocityAngular(PhysBody* body, float dt);
 
+	float Module(float x, float y);
+	void Unitary(float x, float y);
+
 public:
 	p2List<PhysBody*> bodies;
 
 private:
-	float gravity = 9.8f;
-};
-
-class Environment {
-public:
-	fPoint wind = { 1.0f, 1.0f };
-	float density = 1;
-};
-
-struct Ground {
-	iPoint position = { 0, SCREEN_HEIGHT - 195 };
+	float gravity = 0.0001f;
 };
