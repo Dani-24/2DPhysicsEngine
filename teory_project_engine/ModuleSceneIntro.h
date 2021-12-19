@@ -4,29 +4,7 @@
 #include "p2DynArray.h"
 #include "Globals.h"
 
-enum lightTypes
-{
-	tiny,
-	medium,
-	big
-};
-
 class ModuleSceneIntro;
-
-struct Light
-{
-	Light() : body(NULL), texture(NULL), on(false), fx(0)
-	{}
-
-	Light(ModuleSceneIntro* physics, int x, int y, lightTypes type);
-
-	lightTypes type;
-	PhysBody* body;
-	SDL_Texture* texture;
-	bool on;
-	uint fx;
-	int x, y;
-};
 
 class ModuleSceneIntro : public Module
 {
@@ -38,21 +16,10 @@ public:
 	update_status Update(float dt);
 	bool CleanUp();
 
+	void SetDeltaTime60Fps();
+	void SetDeltaTime30Fps();
+
 public:
-
-	/*
-
-	SDL_Texture* tex_light_tiny;
-	SDL_Texture* tex_light_medium;
-	SDL_Texture* tex_light_big;
-	
-	uint fx_light_tiny;
-	uint fx_light_medium;
-	uint fx_light_big;
-
-	p2DynArray<Light> lights;
-	
-	*/
 
 	SDL_Texture* background;
 
@@ -60,4 +27,7 @@ public:
 	uint player_lose_fx;
 
 	iPoint BGSize;
+
+	SDL_Texture* enemy;
+	PhysBody* enemyBody;
 };

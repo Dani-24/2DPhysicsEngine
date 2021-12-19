@@ -45,7 +45,7 @@ public:
 	bool CleanUp();
 
 	// Config
-	void setDeltaTime(float dt) { this->dt = dt; };
+	void setDeltaTime(float fps);
 
 	void setWindowTitle(const char* title) { window->SetTitle(title); };
 
@@ -58,7 +58,7 @@ private:
 
 private:
 	// Debug by default is off (Debug key = F1)
-	bool debug = false;
+	bool debug = true;
 
 	// Time control --------
 	PerfTimer* ptimer;

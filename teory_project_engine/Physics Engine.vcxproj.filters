@@ -146,4 +146,8 @@
       <Filter>Resource files</Filter>
     </ResourceCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="engineIcon.ico" />
+    <Image Include="bitmap1.bmp" />
+  </ItemGroup>
 </Project>

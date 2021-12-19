@@ -13,10 +13,9 @@ public:
 struct Ground {
 	PhysBody* groundBody;
 
-	fPoint position = { 0, SCREEN_HEIGHT - 75 };
+	fPoint position = { 0, SCREEN_HEIGHT - 90 };
 
 	SDL_Texture* groundTexture;
-	Animation idleAnim;
 };
 
 class ModulePhysics : public Module
@@ -48,8 +47,6 @@ public:
 
 private:
 	bool debug;
-
-	Animation idleAnim;
 
 	Ground* ground;
 

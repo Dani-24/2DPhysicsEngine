@@ -47,7 +47,7 @@ public:
 
 	p2List<Ball*> balls;
 
-	SDL_Texture* canonBase, * canonShooter;
+	SDL_Texture* canonBase, * canonShooter, * player;
 
 	uint shotFx, hitFx;
 

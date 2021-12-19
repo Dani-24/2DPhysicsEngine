@@ -1,9 +1,16 @@
-#include"p2Point.h"
+﻿#include"p2Point.h"
 
 enum class PhysBodyType {
 	STATIC_BODY = 0,
 	KINEMATIC_BODY,
 	DYNAMIC_BODY
+};
+
+enum class PhysBodyCategory {
+	PLAYER,
+	/* ♫ everybody wants to be my*/ ENEMY,
+	CANONBALL,
+	GROUND
 };
 
 // BODY states ??????????????????????????
@@ -39,6 +46,8 @@ public:
 	// Set the body type to STATIC_BODY, KINEMATIC_BODY or DYNAMIC_BODY
 	void setBodyType(PhysBodyType type) { this->type = type; };
 
+	void setBodyCategory(PhysBodyCategory category) { this->category = category; };
+
 	void setLiftCoefficient(float liftCo) { this->liftCo = liftCo; };
 	void setDragCoefficient(float dragCo) { this->dragCo = dragCo; };
 
@@ -69,6 +78,7 @@ public:
 	float getAngularAcceleration() { return angularAcceleration; };
 
 	PhysBodyType getBodyType() { return type; };
+	PhysBodyCategory getBodyCategory() { return category; };
 
 	float getLiftCoefficient() { return liftCo; };
 	float getDragCoefficient() { return dragCo; };
@@ -102,6 +112,7 @@ private:
 	float height;
 	float angle;
 	PhysBodyType type;
+	PhysBodyCategory category;
 	float surface;
 	float radius = 0;
 	float density;

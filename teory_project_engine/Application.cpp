@@ -129,8 +129,12 @@ update_status Application::Update()
 
 	static char windowTitle[256];
 
-	sprintf_s(windowTitle, 256, "FPS: %i // dt: %.2f // Canon Angle: %.0f // Canon force: %.3f", framesPerSecond, dt, player->shootAngle, player->shootForce);
-
+	if (debug == true) {
+		sprintf_s(windowTitle, 256, "FPS: %i // dt: %.2f // Canon Angle: %.0f // Canon force: %.3f // DEBUG ON", framesPerSecond, dt, player->shootAngle, player->shootForce);
+	}
+	else {
+		sprintf_s(windowTitle, 256, "FPS: %i // dt: %.2f // Canon Angle: %.0f // Canon force: %.3f // DEBUG OFF", framesPerSecond, dt, player->shootAngle, player->shootForce);
+	}
 	setWindowTitle(windowTitle);
 
 	return ret;
@@ -152,4 +156,8 @@ bool Application::CleanUp()
 void Application::AddModule(Module* mod)
 {
 	list_modules.add(mod);
+}
+
+void Application::setDeltaTime(float fps) {
+	dt = 1000.0f / fps;
 }

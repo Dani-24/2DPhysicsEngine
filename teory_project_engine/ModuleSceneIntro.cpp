@@ -27,6 +27,10 @@ bool ModuleSceneIntro::Start()
 
 	app->audio->PlayMusic("Assets/bgMusic.ogg");
 
+	enemy = app->textures->Load("Assets/penguin.png");
+	fPoint posEnemy = { 1600, 200 };
+	enemyBody = app->physics->CreateSolidRect(posEnemy, 150, 200);
+
 	return ret;
 }
 
@@ -55,11 +59,29 @@ update_status ModuleSceneIntro::Update(float dt)
 		}
 	}
 
+	if (app->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN) {
+		SetDeltaTime30Fps();
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN) {
+		SetDeltaTime60Fps();
+	}
+
 	// ====================
 	//   Draw Background:
 	// ====================
 
 	app->renderer->Blit(background, 0, 0);
 
+	app->renderer->Blit(enemy, enemyBody->getPosition().x, enemyBody->getPosition().y);
+
 	return UPDATE_CONTINUE;
+}
+
+void ModuleSceneIntro::SetDeltaTime60Fps() {
+	app->setDeltaTime(60);
+}
+
+void ModuleSceneIntro::SetDeltaTime30Fps() {
+	app->setDeltaTime(30);
 }

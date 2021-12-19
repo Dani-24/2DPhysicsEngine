@@ -18,6 +18,8 @@ void log(const char file[], int line, const char* format, ...);
 #define METERS_TO_PIXELS(m) ((int) PIXELS_PER_METER * m)
 #define PIXEL_TO_METERS(p)  ((float) METER_PER_PIXEL * p)
 
+#define PI 3.14159265
+
 typedef unsigned int uint;
 
 enum update_status

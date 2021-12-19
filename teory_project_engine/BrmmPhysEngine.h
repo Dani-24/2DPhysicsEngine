@@ -8,13 +8,6 @@
 
 class PhysBody;
 
-enum TypesOfBodies {
-	PLAYER,
-	/* ♫ everybody wants to be my*/ ENEMY,
-	CANONBALL,
-	GROUND
-};
-
 class BrmmPhysEngine {
 public:
 	BrmmPhysEngine() {};

@@ -25,6 +25,8 @@ bool ModulePlayer::Start()
 	shotFx = app->audio->LoadFx("Assets/canonShoot.wav");
 	hitFx = app->audio->LoadFx("Assets/hitFx.wav");
 
+	player = app->textures->Load("Assets/mario.png");
+
 	return true;
 }
 
@@ -89,6 +91,8 @@ update_status ModulePlayer::Update(float dt)
 	//				   DRAW THINGS
 	// ============================================
 
+	app->renderer->Blit(player, 0, 350);
+
 	app->renderer->Blit(canonShooter, pos.x, pos.y, angle, 0, 1.0f, 38, 52);
 
 	app->renderer->Blit(canonBase, pos.x - 7, pos.y + 30);
@@ -99,7 +103,7 @@ update_status ModulePlayer::Update(float dt)
 
 	// Check die
 	for (p2List_item<Ball*>* item = balls.getFirst(); item != NULL; item = item->next) {
-		if (item->data->position.x > app->scene_intro->BGSize.x || item->data->position.y > SCREEN_HEIGHT) {
+		if (item->data->position.x > app->scene_intro->BGSize.x || item->data->position.y > SCREEN_HEIGHT - 100) {
 			if (DeleteBall(item->data) == true) {
 				break;
 			}

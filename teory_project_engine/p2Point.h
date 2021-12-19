@@ -73,6 +73,25 @@ public:
 		return (x != v.x || y != v.y);
 	}
 
+	// Added multiplications Math
+	const p2Point& operator *(const p2Point& v)
+	{
+		p2Point<TYPE> potato;
+
+		potato.x = x * v.x;
+		potato.y = y * v.y;
+
+		return(potato);
+	}
+
+	const p2Point& operator *(const float& v)
+	{
+		x *= v;
+		y *= v;
+
+		return(*this);
+	}
+
 	// Utils ------------------------------------------------
 	bool IsZero() const
 	{

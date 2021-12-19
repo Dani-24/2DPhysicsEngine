@@ -5,11 +5,6 @@
 
 ModulePhysics::ModulePhysics(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
-	for (int i = 0; i < 5; i++) {
-		idleAnim.PushBack({ 0, i * 51, 720, 51 });
-	}
-	idleAnim.loop = true;
-	idleAnim.speed = 1.0f;
 }
 
 ModulePhysics::~ModulePhysics()
@@ -18,7 +13,6 @@ ModulePhysics::~ModulePhysics()
 
 bool ModulePhysics::Start()
 {
-	idleAnim.DeleteAnim();
 
 	LOG("Creating 2D Physics environment");
 
@@ -27,6 +21,11 @@ bool ModulePhysics::Start()
 	za_Warudo = new BrmmPhysEngine();
 
 	ground = CreateGround();
+
+
+	if (debug == true) {
+		DebugDraw();
+	}
 
 	return true;
 }
@@ -58,10 +57,9 @@ void ModulePhysics::DebugDraw() {
 
 	// Draw Colliders/ hitboxes / random stuff / among us /etc
 
-	LOG("%d", idleAnim.GetCurrentFrameINT());
-
-	idleAnim.Update();
-	app->renderer->Blit(ground->groundTexture, ground->position.x, ground->position.y, 0, &idleAnim.GetCurrentFrame());
+	app->renderer->Blit(ground->groundTexture, ground->position.x, ground->position.y, 0);
+	app->renderer->Blit(ground->groundTexture, ground->position.x + 722, ground->position.y, 0);
+	app->renderer->Blit(ground->groundTexture, ground->position.x + 722 + 722, ground->position.y, 0);
 }
 
 Ground* ModulePhysics::CreateGround() {
@@ -71,8 +69,6 @@ Ground* ModulePhysics::CreateGround() {
 	g->groundBody = CreateSolidRect(g->position, 1920, 100);
 
 	g->groundTexture = app->textures->Load("Assets/ground.png");
-
-	g->idleAnim = this->idleAnim;
 
 	return g;
 }
