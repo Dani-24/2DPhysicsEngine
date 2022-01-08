@@ -145,7 +145,7 @@ void ModulePlayer::AddBall() {
 
 bool ModulePlayer::DeleteBall(Ball* b) {
 
-	p2List_item<Ball*>* c =balls.getFirst();
+	p2List_item<Ball*>* c = balls.getFirst();
 
 	bool ballDeleted = false;
 
