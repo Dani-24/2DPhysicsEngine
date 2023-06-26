@@ -8,7 +8,7 @@ My engine is BRMM engine, and BRMM engine is a Nice engine
 
 -----------------------
 
-This also include an amazing bad clone from Worms just to test that my bullshit code works.
+This also include an amazing bad clone from Worms just to test that this "thing" works.
 
 (*This last part is currently under development*)
 
